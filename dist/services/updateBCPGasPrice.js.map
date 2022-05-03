@@ -1,1 +1,0 @@
-{"version":3,"file":"updateBCPGasPrice.js","sourceRoot":"","sources":["../../src/services/updateBCPGasPrice.ts"],"names":[],"mappings":";;;;;;;;;;;;;;AAAA,4DAA+B;AAC/B,4CAA4C;AAE5C,SAAe,IAAI;;QAClB,MAAM,OAAO,GAAoB,MAAM,oBAAK,CAAC,GAAG,CAAC,yCAAyC,CAAC,CAAC;QAC5F,MAAM,IAAI,GAAG,MAAM,IAAA,oBAAW,EAAC,OAAO,CAAC,IAAI,CAAC,CAAC;IAE9C,CAAC;CAAA"}

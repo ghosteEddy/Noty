@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import errorHandler from './middlewares/errorHandler';
 // routers import
 import healthCheckRouter from './routes/healthCheckRouter';
+import gasRouter from './routes/gasRouter';
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -24,6 +25,8 @@ app.use(appHelmet);
 // app.use(compression());
 
 app.use('/check', healthCheckRouter);
+
+app.use('/gas', gasRouter);
 
 app.use(errorHandler);
 // set port, listen for requests
