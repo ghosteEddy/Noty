@@ -12,19 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bcpOilPriceCheck = exports.healthCheck = void 0;
 const superagent_1 = __importDefault(require("superagent"));
 const parser_1 = require("../utils/parser");
-const gas_1 = require("../models/gas");
-const healthCheck = (req, res) => {
-    res.send('Site Available');
-};
-exports.healthCheck = healthCheck;
-const bcpOilPriceCheck = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const xmlData = yield superagent_1.default.get('https://www.bangchak.co.th/api/oilprice');
-    const data = yield (0, parser_1.parseBCPxml)(xmlData.text);
-    const allGas = yield new gas_1.Gas().findAll();
-    res.send(data);
-});
-exports.bcpOilPriceCheck = bcpOilPriceCheck;
-//# sourceMappingURL=healthCheckController.js.map
+function main() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const xmlData = yield superagent_1.default.get('https://www.bangchak.co.th/api/oilprice');
+        const data = yield (0, parser_1.parseBCPxml)(xmlData.text);
+    });
+}
+//# sourceMappingURL=updateBCPGasPrice.js.map

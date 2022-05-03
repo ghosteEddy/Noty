@@ -1,5 +1,6 @@
 import xml2js from 'xml2js';
-import {oilPrice} from '../models/oilPrice';
+import {GasPrice, TGasPrice} from '../models/gasPrice';
+import {bcpDateFormat}from '../configs/parserConfig';
 
 async function parseXML(text :string){
 	const parser = new xml2js.Parser();
@@ -112,18 +113,23 @@ const parseBCPxml = async (text :string) =>{
 
 	const dateString: string = obj.header.update_date[0];
 	// date example : '26/4/2565 15:41:06'
-	const update_date = parseDateTime(dateString, 'DD/MM/YYYY hh:mm:ss', true);
+	const update_date = parseDateTime(dateString, bcpDateFormat, true);
 	const effective_date = new Date(update_date);
 	effective_date.setDate(effective_date.getDate() + 1);
 
-	const oilPrices: oilPrice[] = [];
+	const gasPrices: GasPrice[] = [];
 	const items = obj.header.item;
 	items.forEach(element => {
-		oilPrices.push({
+		const buffer: TGasPrice = {
+			id: null,
 			name: element.type[0],
 			todayPrice: element.today[0],
-			tomorrowPrice: element.tomorrow[0]
-		});
+			tomorrowPrice: element.tomorrow[0],
+			source: 'bcp',
+			sourceUpdate: update_date
+		};
+		const gasPrice: GasPrice = new GasPrice(buffer);
+		gasPrices.push(gasPrice);
 	});
 	return {
 		update_date : update_date,
@@ -131,7 +137,7 @@ const parseBCPxml = async (text :string) =>{
 		remark_en: obj.header.remark_en[0],
 		remark_th: obj.header.remark_th[0],
 		copyright: obj.header.copyright[0],
-		oilPrices : oilPrices
+		gasPrices : gasPrices
 	};
 };
 
