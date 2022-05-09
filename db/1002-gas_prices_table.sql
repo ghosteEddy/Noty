@@ -4,6 +4,7 @@ CREATE TABLE noty_dev.gas_prices (
 	today_price DECIMAL(19,2) NOT NULL,
 	tomorrow_price DECIMAL(19,2) NOT NULL,
 	source ENUM('other','bcp') DEFAULT 'other' NOT NULL,
+	source_updated TIMESTAMP DEFAULT current_timestamp() NULL
 	updated TIMESTAMP DEFAULT current_timestamp() NULL,
 	CONSTRAINT gas_prices_PK PRIMARY KEY (id),
 	CONSTRAINT gas_prices_FK FOREIGN KEY (id) REFERENCES noty_dev.gases(id)

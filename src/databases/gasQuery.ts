@@ -15,7 +15,7 @@ async function findOne(id: number): Promise<IGas>{
 	return result[0];
 }
 
-async function findIdByName(name: string): Promise<IGas>{
+async function findByName(name: string): Promise<IGas>{
 	const result = await mariaDB.select(
 		'id',
 		'name',
@@ -41,4 +41,4 @@ async function findAll(): Promise<IGas[]>{
 	return result;
 }
 
-export default {findOne, findAll};
+export default {findOne, findAll, findByName};

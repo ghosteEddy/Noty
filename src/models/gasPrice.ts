@@ -1,7 +1,8 @@
 import QgasPrice from '../databases/gasPriceQuery';
 
 type TGasPrice = {
-	id : number | null
+	id : number | null,
+	gasId: number | null
     name : string | null,
     todayPrice : number | null,
     tomorrowPrice : number | null,
@@ -11,6 +12,7 @@ type TGasPrice = {
 
 const prototype: TGasPrice = {
 	id: null,
+	gasId: null,
 	name : null,
 	todayPrice : null,
 	tomorrowPrice : null,
@@ -20,6 +22,7 @@ const prototype: TGasPrice = {
 
 class GasPrice{
 	id: number | null;
+	gasId: number | null;
 	name : string | null;
 	todayPrice : number | null;
 	tomorrowPrice : number | null;
@@ -27,6 +30,7 @@ class GasPrice{
 	sourceUpdate: Date | null;
 	constructor (params: TGasPrice = prototype){
 		this.id = params.id;
+		this.gasId = params.gasId;
 		this.name = params.name;
 		this.todayPrice = params.todayPrice;
 		this.tomorrowPrice = params.tomorrowPrice;

@@ -122,6 +122,7 @@ const parseBCPxml = async (text :string) =>{
 	items.forEach(element => {
 		const buffer: TGasPrice = {
 			id: null,
+			gasId: null,
 			name: element.type[0],
 			todayPrice: element.today[0],
 			tomorrowPrice: element.tomorrow[0],
